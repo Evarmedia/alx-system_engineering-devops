@@ -8,7 +8,7 @@ file { '/etc/haproxy/haproxy_custom.cfg':
   ensure  => present,
   content => @("EOF"
 frontend http_front
-    http-response set-header X-Served-By %H
+    http-response set-header X-Served-By $HOSTNAME
 EOF
 ),
  require => Package['haproxy'],
