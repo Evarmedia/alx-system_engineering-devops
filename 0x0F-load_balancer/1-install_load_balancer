@@ -38,9 +38,9 @@ backend webservers
 EOF
 
 # Enable HAProxy init script
-sudo sed -i 's/ENABLED=0/ENABLED=1/' /etc/default/haproxy
+echo "ENABLED=1" | sudo tee -a /etc/default/haproxy
 
-# Testing the HAproxy configuration file
+# Test haproxy
 sudo haproxy -c -f /etc/haproxy/haproxy.cfg
 
 # Restart the Nginx service
