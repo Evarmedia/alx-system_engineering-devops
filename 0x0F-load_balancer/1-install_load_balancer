@@ -33,8 +33,8 @@ frontend load_balancer
 
 backend webservers
     balance roundrobin
-    server web-01 150802-web-01:80 check
-    server web-02 150802-web-02:80 check
+    server 150802-web-01 100.26.168.235:80 check
+    server 150802-web-02 18.207.234.92:80 check
 EOF
 
 # Enable HAProxy init script
