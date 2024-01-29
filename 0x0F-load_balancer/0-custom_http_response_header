@@ -4,11 +4,19 @@
 config_file="/etc/nginx/sites-available/default"  # Replace with your actual Nginx configuration file path
 
 # Define the custom header line
-custom_header="    add_header X-Served-By \$HOSTNAME;"
+custom_header="    add_header X-Served-By \$server_name;"
 
 # Append the custom header line to the configuration file
-echo "$custom_header" | sudo tee -a "$config_file" > /dev/null
-echo "Custom header added successfully to $config_file"
+if [ -f "$config_file" ]; then
+    if ! grep -q "add_header X-Served-By" "$config_file"; then
+        sed -i "/^}/i $custom_header" "$config_file"
+        echo "Custom header added successfully to $config_file"
+    else
+        echo "Custom header already exists in $config_file"
+    fi
+else
+    echo "$config_file does not exist"
+fi
 
 # test for errors 
 sudo nginx -t
