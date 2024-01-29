@@ -1,1 +1,17 @@
 #!/usr/bin/env bash
+
+# Define the configuration file path
+config_file="/etc/nginx/sites-available/default"  # Replace with your actual Nginx configuration file path
+
+# Define the custom header line
+custom_header="    add_header X-Served-By \$HOSTNAME;"
+
+# Append the custom header line to the configuration file
+echo "$custom_header" | sudo tee -a "$config_file" > /dev/null
+echo "Custom header added successfully to $config_file"
+
+# test for errors 
+sudo nginx -t
+
+# restart nginx
+sudo service nginx restart
