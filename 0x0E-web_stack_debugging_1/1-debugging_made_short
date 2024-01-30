@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+sed -i "s/8080 default_server/80 default_server/" /etc/nginx/sites-enabled/default
+pkill -o nginx
+service nginx restart
