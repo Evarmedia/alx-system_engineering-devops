@@ -11,11 +11,11 @@ apt-get -y install haproxy
 # edit config file
 server_config=\
 "
-frontend  besthor_frontend
+frontend  mish_frontend
         bind *:80
         mode http
-        default_backend besthor_backend
-backend besthor_backend
+        default_backend mish_backend
+backend mish_backend
         balance roundrobin
         server 176572-web-01 100.26.168.235:80 check
         server 176572-web-02 18.207.234.92:80 check
