@@ -33,13 +33,13 @@ defaults
         errorfile 503 /etc/haproxy/errors/503.http
         errorfile 504 /etc/haproxy/errors/504.http
 
-frontend  mishak-frontend
+frontend  mishak_frontend
         bind *:80
         mode http
         bind *:443 ssl crt /etc/haproxy/certs/www.mosiwebdev.tech.pem
         redirect scheme https if !{ ssl_fc }
-        default_backend ollyjhay-backend
-backend 	mishak-backend
+        default_backend mishak_backend
+backend 	mishak_backend
         balance roundrobin
         server 150802-web-01 100.26.244.78:80 check
         server 150802-web-02 54.174.44.186:80 check
