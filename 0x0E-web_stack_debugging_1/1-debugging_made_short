@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 # creates a symbolic link (-s) btw the nginx config files
 ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
-
 # restart nginx
 kill "$(pgrep 'nginx' | head -1)"
