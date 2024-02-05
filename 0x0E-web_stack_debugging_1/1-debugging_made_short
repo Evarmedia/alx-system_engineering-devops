@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# script to fix port 80 access
-sed -i "s/8080 default_server/80 default_server/" /etc/nginx/sites-enabled/default
-pkill -o nginx
+# creates a symbolic link (-s) btw the nginx config files
+ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 
+# restart nginx
+kill "$(pgrep 'nginx' | head -1)"
