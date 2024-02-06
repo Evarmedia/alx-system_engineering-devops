@@ -1,0 +1,63 @@
+When you type "google.com" in your browser and press Enter, the following steps occur:
+
+DNS Lookup: When you type "google.com" in your browser and press Enter, your browser initiates a Domain Name System (DNS) lookup to find the IP address associated with the domain "google.com". 
+
+If the IP address for "google.com" is not cached locally, your browser sends a DNS query to a DNS server to obtain the IP address.
+
+This process involves several steps, including checking the local cache, querying DNS resolvers, root DNS servers, Top-Level Domain (TLD) servers, and authoritative name servers to obtain the IP address. Ultimately, the DNS lookup process allows your browser to obtain the necessary IP address for "google.com" so that it can establish a connection to the web server hosting the website. This IP address is crucial for routing the network packets to the correct destination and retrieving the requested web page.
+
+TCP Handshake: Once the IP address of "google.com" is resolved, the browser initiates a connection to the web server using the TCP (Transmission Control Protocol) handshake.
+
+This involves a three-way handshake where the browser and the server exchange synchronization (SYN) and acknowledgment (ACK) packets to establish a reliable connection. The TCP handshake, also known as the TCP three-way handshake, is a process used in the Transmission Control Protocol (TCP) to establish a connection between two devices, typically a client (such as your computer's web browser) and a server (such as the web server hosting a website). The TCP handshake involves three steps to ensure a reliable and orderly connection setup:
+
+SYN (Synchronize) - First Step: The client (e.g., your browser) initiates the connection by sending a TCP segment with the SYN flag set to the server.
+
+This segment contains a sequence number that the client chooses to start the communication.
+
+SYN-ACK (Synchronize-Acknowledgment) - Second Step: Upon receiving the initial SYN segment, the server responds with a TCP segment that has both the SYN and ACK flags set.
+
+In this response, the server acknowledges the SYN from the client and also sends its own initial sequence number.
+
+ACK (Acknowledgment) - Third Step: Finally, the client acknowledges the SYN-ACK from the server by sending a TCP segment with the ACK flag set.
+
+This segment also acknowledges the server's sequence number, and the connection is now established and ready for data exchange.
+
+This three-way handshake is crucial for establishing a reliable and symmetric connection between the client and server, ensuring that both parties agree on the initial sequence numbers and their readiness to exchange data. The TCP handshake sets the stage for the secure and orderly transmission of data between the communication endpoints.
+
+Establishing Connection: Using the obtained IP address, your browser initiates a connection to the web server hosting "google.com" using the HTTP (Hypertext Transfer Protocol) or the more secure HTTPS (HTTP Secure) protocol.
+
+HTTP Request: When you type "google.com" in your browser and press Enter, your browser sends an HTTP (Hypertext Transfer Protocol) request to the web server hosting the "google.com" website. This request is a message sent from the client (your browser) to the server, specifying the action to be performed and the resource requested.
+
+The HTTP request typically includes the following components:
+
+Request Line: Specifies the HTTP method (e.g., GET, POST, HEAD) to be used for the request, along with the specific URL or path of the resource being requested (in this case, the homepage of "google.com").
+
+Request Headers: These contain additional information about the request, such as the user-agent (identifying the browser and operating system), accepted content types, language preferences, cache directives, and more.
+
+Request Body (optional): Some types of requests, such as those using the HTTP POST method, may include a request body containing data to be sent to the server.
+
+Once the web server receives the HTTP request, it processes the request and prepares to send back the appropriate HTTP response, typically containing the requested webpage and accompanying resources. Once the connection is established, your browser sends an HTTP request to the web server for the specific resource, which in this case, is the homepage of "google.com". 
+
+Server Processing: The web server receives the HTTP request and processes it. It locates the requested resource and prepares to send back the necessary data to the browser. After receiving an HTTP request from the client's browser, the web server initiates the server processing phase. During this phase, the server unpacks and interprets the HTTP request to determine the actions to be taken. The server processing phase typically involves the following steps:
+
+Parsing the Request: The server parses the received HTTP request to extract relevant information, including the HTTP method, requested URL, and headers. This parsing allows the server to understand the client's intent and the specific resource being requested.
+
+Routing and Resource Mapping: Based on the parsed request, the server determines the appropriate route or resource handler to process the request. This step involves matching the requested URL to the corresponding server-side code or file, such as a specific HTML document or a script responsible for generating dynamic content.
+
+Authentication and Authorization: If the requested resource requires authentication, the server verifies the client's credentials and determines whether the client has the necessary permissions to access the resource. This step is crucial for securing restricted areas of the website or web application.
+
+Business Logic and Data Retrieval: In the case of dynamic content, the server executes the necessary business logic to generate or retrieve the data required to fulfill the client's request. This may involve querying databases, processing user input, or integrating with external services.
+
+Response Generation: Based on the processing of the request, the server formulates an appropriate HTTP response. This includes generating the response headers, including metadata such as the content type and response status codes, and assembling the response body, which contains the requested data or resources.
+
+Sending the Response: Once the response is constructed, the server sends the HTTP response back to the client, typically via the same TCP connection through which the request was received.
+
+The server processing phase ensures that the client's request is correctly understood, authenticated if necessary, and responded to with the appropriate data or resources. This phase forms a critical part of the server's role in fulfilling client requests and delivering web content.
+
+HTTP Response: The web server generates an HTTP response containing the HTML, CSS, JavaScript, and other resources required to render the "google.com" homepage.
+
+The response also includes metadata in the form of HTTP headers and status codes.
+
+Page Rendering: The browser receives and processes the HTTP response. It parses the HTML, processes any embedded resources like CSS and JavaScript, and begins the rendering process to display the webpage.
+
+Additional Resource Loading: The webpage may contain additional resources such as images, stylesheets, and scripts. Your browser will make separate requests for these resources and load them as needed to fully render the webpage.
