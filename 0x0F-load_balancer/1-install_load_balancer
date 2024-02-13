@@ -11,14 +11,14 @@ apt-get -y install haproxy
 # edit config file
 server_config=\
 "
-frontend  mish_frontend
+frontend  mishak_frontend
         bind *:80
         mode http
-        default_backend mish_backend
-backend mish_backend
+        default_backend mishak_backend
+backend mishak_backend
         balance roundrobin
-        server 176572-web-01 100.26.168.235:80 check
-        server 176572-web-02 18.207.234.92:80 check
+        server 176572-web-01 100.26.244.78:80 check
+        server 176572-web-02 54.174.44.186:80 check
 "
 echo "$server_config" | sudo tee -a /etc/haproxy/haproxy.cfg
 
