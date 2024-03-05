@@ -1,27 +1,30 @@
 #!/usr/bin/python3
 
-import praw
+import requests
 
 
-def recurse(subreddit, hot_list=[], last_post=None, count=10):
-    ''' recursive func that queries Reddit API '''
-    reddit = praw.Reddit(client_id='your_client_id',
-                         client_secret='your_client_secret',
-                         user_agent='your_user_agent')
-
-    try:
-        current_subreddit = reddit.subreddit(subreddit)
-        new_posts = current_subreddit.hot(limit=count, params={"after": last_post})
-        new_hot_list = [post.title for post in new_posts]
-        hot_list.extend(new_hot_list)
-
-        if len(new_hot_list) == 0:
-            if len(hot_list) == 0:
-                return None
-            else:
-                return hot_list
-        else:
-            last_post = new_hot_list[-1]
-            return recurse(subreddit, hot_list, last_post, count)
-    except prawcore.exceptions.Redirect:
+def recurse(subreddit, hot_list=[], after=None):
+    url = f"https://www.reddit.com/r/{subreddit}/hot.json"
+    headers = {"User-Agent": "Mozilla/5.0 (X11; Ubuntu; Chrome/88.0.4324.182 Safari/537.36"}
+    params = {"limit": 100, "after": after}
+    response = requests.get(url, headers=headers, params=params)
+    
+    if response.status_code != 200:
         return None
+    
+    data = response.json()
+    children = data.get("data", {}).get("children", [])
+    if not children:
+        return hot_list
+    
+    for child in children:
+        title = child.get("data", {}).get("title")
+        if title:
+            hot_list.append(title)
+    
+    after = data.get("data", {}).get("after")
+    if after:
+        return recurse(subreddit, hot_list, after)
+    else:
+        return hot_list
+    

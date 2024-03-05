@@ -1,17 +1,24 @@
 #!/usr/bin/python3
 
-import praw
+import requests
 
 
 def top_ten(subreddit):
-    '''TOPTEN'''
-    reddit = praw.Reddit(client_id='your_client_id',
-                         client_secret='your_client_secret',
-                         user_agent='your_user_agent')
+    url = f"https://www.reddit.com/r/{subreddit}/hot.json?limit=10"
+    headers = {'User-Agent': 'Mozilla/5.0'}
 
-    try:
-        subreddit = reddit.subreddit(subreddit)
-        for submission in subreddit.hot(limit=10):
-            print(submission.title)
-    except prawcore.exceptions.Redirect:
+    response = requests.get(url, headers=headers)
+
+    '''Check if the subreddit exists by ensuring
+    a successful status code and data length'''
+    if response.status_code == 200 and 'data' in response.json():
+        data = response.json()['data']['children']
+
+        if not data:
+            print(None)
+            return
+
+        for post in data:
+            print(post['data']['title'])
+    else:
         print(None)
