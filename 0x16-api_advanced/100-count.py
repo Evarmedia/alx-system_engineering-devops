@@ -3,7 +3,9 @@
 import praw
 import re
 
+
 def count_words(subreddit, word_list, titles=None):
+    '''a recursive function that queries the Reddit API'''
     if titles is None:
         titles = []
 
