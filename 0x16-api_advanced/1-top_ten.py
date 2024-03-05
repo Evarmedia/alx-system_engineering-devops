@@ -9,9 +9,9 @@ def top_ten(subreddit):
         or None if queried subreddit is invalid """
     get_headers = {'User-Agent': 'xica369'}
     url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
-    lim_parameters = {'limit': 10}
+    parameters = {'limit': 10}
     response = requests.get(url, headers=get_headers, allow_redirects=False,
-                            params=lim_parameters)
+                            params=parameters)
 
     if response.status_code == 200:
         titles_ = response.json().get('data').get('children')
