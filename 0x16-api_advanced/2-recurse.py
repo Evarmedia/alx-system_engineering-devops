@@ -2,7 +2,9 @@
 
 import praw
 
+
 def recurse(subreddit, hot_list=[], last_post=None, count=10):
+    ''' recursive func that queries Reddit API '''
     reddit = praw.Reddit(client_id='your_client_id',
                          client_secret='your_client_secret',
                          user_agent='your_user_agent')
