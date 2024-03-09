@@ -13,7 +13,7 @@ I, Mishak Mosimabale encountered the issue upon opening the project and being, w
 3. Java Jive Break: Midway through the investigation, I take a Java jive break (yes, I'm a coffee aficionado) to let my brain simmer and stew over the problem. Sometimes, the best solutions come when you're least expecting them—usually between sips of caffeine.
 
 4. And thus began the actual process of debugging, I Checked running processes using `ps aux`. Two `apache2` processes - `root` and `www-data` -
-were properly running.
+were running properly.
 
 5. Looked in the `sites-available` folder of the `/etc/apache2/` directory. Determined that
 the web server was serving content located in `/var/www/html/`.
@@ -25,10 +25,10 @@ time... but was rewarded! `strace` revelead an `-1 ENOENT (No such file or direc
 occurring upon an attempt to access the file `/var/www/html/wp-includes/class-wp-locale.phpp`.
 
 5. Looked through files in the `/var/www/html/` directory one-by-one, using Vim pattern
-matching to try and locate the erroneous `.phpp` file extension. Located it in the
-`wp-settings.php` file. (Line 137, `require_once( ABSPATH . WPINC . '/class-wp-locale.php' );`).
+matching to try and locate the erroneous `.phpp` file extension. Located it in the `wp-settings.php` file. (Line 137, `require_once( ABSPATH . WPINC . '/class-wp-locale.php' );`).
 
 6. I used "grep -ro "phpp" /var/www/html" and "grep -n "phpp" /var/www/html/wp-settings.php" to check the lines 
+
 7. I then fixed the typo error `p` from the line.
 
 8. Tested another `curl` on the server. And it was OK.
