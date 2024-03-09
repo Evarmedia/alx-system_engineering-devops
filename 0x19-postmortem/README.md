@@ -4,7 +4,7 @@ At around 06:00AM West African Time (WAT) in Nigeria, an outage was detected on 
 
 ## Debugging Process
 
-Devops debugger Mishak Mosimabale encountered the issue upon opening the project and being, well, instructed to address it, roughly 9:43AM WAT. He promptly proceeded to undergo solving the problem.
+I, Mishak Mosimabale encountered the issue upon opening the project and being, well, instructed to address it, roughly 9:43AM WAT. He promptly proceeded to undergo solving the problem.
 
 1. Initial Freak-Out Moment: When I stumble upon a bug, my heart skips a beat, but then I remind myself that bugs fear my debugging prowess. I quickly brew a strong cup of coffee (extra shots, please) to prepare for the impending battle.
 
