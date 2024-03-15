@@ -1,24 +1,17 @@
 #!/usr/bin/env bash
-
 # Gracefully reloading Gunicorn.
-
 
 # Find Gunicorn process IDs
 
 GUNICORN_PIDs=$(pgrep gunicorn)
 
-
 if [ -z "$GUNICORN_PIDs" ]; then
 
     echo "No Gunicorn processes found."
-
     exit 1
-
 fi
 
-
 # Stop old workers gracefully
-
 echo "Stopping old workers gracefully..."
 
 for pid in $GUNICORN_PIDs; do
@@ -27,12 +20,8 @@ for pid in $GUNICORN_PIDs; do
 
 done
 
-
 # Wait for old workers to finish processing
-
 echo "Waiting for old workers to finish processing..."
 
 sleep 5
-
-
 echo "Graceful reload complete"
