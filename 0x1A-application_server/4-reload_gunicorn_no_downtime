@@ -6,18 +6,14 @@
 GUNICORN_PIDs=$(pgrep -f 'gunicorn --bind')
 
 if [ -z "$GUNICORN_PIDs" ]; then
-
     echo "No Gunicorn processes found."
-#    exit 1
 fi
 
 # Stop old workers gracefully
 echo "Stopping old workers gracefully..."
 
 for pid in $GUNICORN_PIDs; do
-
     kill -HUP "$pid"
-
 done
 
 # Wait for old workers to finish processing
